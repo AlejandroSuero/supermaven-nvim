@@ -46,6 +46,7 @@ function BinaryFetcher:discover_binary_url()
   end
   print(vim.inspect(json))
   print(vim.inspect(json.downloadUrl))
+  vim.notify(json.downloadUrl, vim.log.levels.INFO)
 
   return json.downloadUrl
 end
@@ -70,6 +71,8 @@ function BinaryFetcher:fetch_binary()
   print(vim.inspect(url))
 
   print("Downloading Supermaven binary, please wait...")
+  vim.notify("Url: " .. url, vim.log.levels.INFO)
+
   local platform = self:platform()
   local response = ""
   if platform == "windows" then
