@@ -44,6 +44,8 @@ function BinaryFetcher:discover_binary_url()
     print("Error: Unable to find download URL for Supermaven binary")
     return nil
   end
+  print(vim.inspect(json))
+  print(vim.inspect(json.downloadUrl))
 
   return json.downloadUrl
 end
@@ -65,6 +67,7 @@ function BinaryFetcher:fetch_binary()
   if url == nil then
     return nil
   end
+  print(vim.inspect(url))
 
   print("Downloading Supermaven binary, please wait...")
   local platform = self:platform()
@@ -74,6 +77,7 @@ function BinaryFetcher:fetch_binary()
   else
     response = vim.fn.system("curl -o " .. local_binary_path .. " " .. "'" .. url .. "'")
   end
+  print(vim.inspect(response))
   if vim.v.shell_error == 0 then
     print("Downloaded binary sm-agent to " .. local_binary_path)
   else
