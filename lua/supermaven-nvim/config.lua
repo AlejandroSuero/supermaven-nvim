@@ -12,7 +12,7 @@ local default_config = {
 M = {}
 
 M.setup_config = function(args)
-  local config = vim.tbl_deep_extend("force", default_config, args)
+  local config = vim.tbl_deep_extend("force", default_config, args or {})
   return config
 end
 
