@@ -37,6 +37,7 @@ function BinaryFetcher:discover_binary_url()
   else
     response = vim.fn.system("curl -s " .. "'" .. url .. "'")
   end
+  print(vim.inspect(response))
 
   local json = vim.fn.json_decode(response)
   if json == nil then
